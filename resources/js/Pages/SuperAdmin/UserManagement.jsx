@@ -176,11 +176,14 @@ export default function Dashboard({ auth, pagedata }) {
                             data={pagedata.content.users.data}
                             renderActions={(rowData) => (
                                 <>
-                                    <DangerButton
-                                        onClick={(e) => delete_user(e, rowData.id)}
-                                    >
-                                        Delete
-                                    </DangerButton>
+                                {rowData.id>1 && 
+                                 <DangerButton
+                                 onClick={(e) => delete_user(e, rowData.id)}
+                             >
+                                 Delete
+                             </DangerButton>
+                             }
+                                   
                                 </>
                             )}
                         ></TableComponents>
