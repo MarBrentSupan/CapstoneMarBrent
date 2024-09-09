@@ -39,8 +39,8 @@ class DatabaseSeeder extends Seeder
         SourceDocument::factory()->create(['name' => "School Manual", 'acronym' => "MN"]);
 
         User::factory()->create([
-            'name' => 'Mark Thompson',
-            'email' => 'superadmin@superadmin.com',
+            'name' => 'Mar Brent',
+            'email' => 'superadmin@hau.edu',
             'username' => 'superadmin',
             'password' => 'passwordz',
             'userRoleId' => 1,
@@ -48,30 +48,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'originator-department1',
-            'email' => 'originator@o.com',
-            'username' => 'originator1',
+            'name' => 'Mark Furton',
+            'email' => 'oop@hau.edu',
+            'username' => 'oop',
             'password' => 'passwordz',
             'userRoleId' => 2,
             'departmentId' => 2,
         ]);
 
         User::factory()->create([
-            'name' => 'originator-department2',
-            'email' => 'originator2@o.com',
-            'username' => 'originator2',
-            'password' => 'passwordz',
-            'userRoleId' => 2,
-            'departmentId' => 3,
-        ]);
-
-        User::factory()->create([
-            'name' => 'Document Controller',
-            'email' => 'superadmin3@superadmin.com',
-            'username' => 'Doccon1',
+            'name' => 'Reden Gopez',
+            'email' => 'oie@hau.edu',
+            'username' => 'oie',
             'password' => 'passwordz',
             'userRoleId' => 3,
-            'departmentId' => 2,
+            'departmentId' => 4,
         ]);
 
 
