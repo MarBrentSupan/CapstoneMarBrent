@@ -28,17 +28,17 @@ class SuperAdminController extends PageController
 
     public function create_user(CreateUserRequest $request)
     {
-        if ($request->userRoleId==3){
-            User::create([
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'username'=>$request->username,
-                'password'=>$request->password,
-                'userRoleId'=>$request->userRoleId,
-                'departmentId'=>3,
-                'notification'=>now()
-            ]);
-        }
+        // if ($request->userRoleId==3){
+        //     User::create([
+        //         'name'=>$request->name,
+        //         'email'=>$request->email,
+        //         'username'=>$request->username,
+        //         'password'=>$request->password,
+        //         'userRoleId'=>$request->userRoleId,
+        //         'departmentId'=>3,
+        //         'notification'=>now()
+        //     ]);
+        // }
         User::create([
             'name'=>$request->name,
             'email'=>$request->email,
