@@ -5,7 +5,7 @@ import SecondaryButton from '@/Components/SecondaryButton';
 import DangerButton from '@/Components/DangerButton';
 import InputError from '@/Components/InputError';
 
-export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
+export default function ViewDocumentModal({ modalRef, data, errors, onClose, user }) {
     const [activeTab, setActiveTab] = useState('general');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModal1Open, setIsModal1Open] = useState(false);
@@ -34,8 +34,6 @@ export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
     const openRejectArchiveForm = () => setIsModal5Open(true);
     const closeRejectArchiveForm = () => setIsModal5Open(false);
     const [rejectionReason, setRejectionReason]=useState("");
-
-    console.log(data);
     
     const [externalLink, setExternalLink]= useState("");
     const [modification, setModification]= useState("");
@@ -388,7 +386,7 @@ export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
                     <div className="flex items-start justify-between rounded-t border-b p-5">
                         <h3 className="text-xl font-medium text-gray-900">Document Notice Form</h3>
                     </div>
-                    <div className="flex-1 overflow-auto p-6">
+                    <div className="flex-1 overflow-auto max-w-full p-6 max-w">
                         <form className="flex flex-col gap-3 text-sm">
                             <p className="truncate max-w-full">
                                 Document Reference: &nbsp;
@@ -462,7 +460,7 @@ export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
                                     required
                                     onChange={(e) => setExternalLink(e.target.value)}
                                 ></textarea>
-                                <InputError message={data.errors.approveLink} className="mt-2" />
+                                <InputError message={errors.externalLink} className="mt-2" />
                             </div>
                             <div className="w-full flex flex-col gap-1">
                                 <p>Details of Modification</p>
@@ -491,7 +489,7 @@ export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
                     <div className="flex items-start justify-between rounded-t border-b p-5">
                         <h3 className="text-xl font-medium text-gray-900">Approved document form</h3>
                     </div>
-                    <div className="flex-1 overflow-auto p-6">
+                    <div className="flex-1 max-w-full p-6">
                         <form className="flex flex-col gap-3 text-sm">
                             <div className="w-full flex flex-col gap-1">
                                 <p>Approved Url</p>
@@ -502,6 +500,7 @@ export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
                                     required
                                     onChange={(e) => setApproveLink(e.target.value)}
                                 ></textarea>
+                                  <InputError message={errors.approveLink} className="mt-2" />
                             </div>
                             <div className="flex flex-row justify-end gap-3 mt-5">
                                 <PrimaryButton type="submit" onClick={(e) => approve_document(e, data.id)}>Approve</PrimaryButton>
@@ -560,7 +559,7 @@ export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
                                     required
                                     onChange={(e) => setArchiveLink(e.target.value)}
                                 ></textarea>
-                                <InputError message={data.errors.archiveLink} className="mt-2" />
+                                <InputError message={errors.archiveLink} className="mt-2" />
                             </div>
                             <div className="flex flex-row justify-end gap-3 mt-5">
                                 <PrimaryButton type="submit" onClick={(e) => archive_document(e, data.id)}>Submit</PrimaryButton>
@@ -579,7 +578,7 @@ export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
                     <div className="flex items-start justify-between rounded-t border-b p-5">
                         <h3 className="text-xl font-medium text-gray-900">Archive Rejection Form</h3>
                     </div>
-                    <div className="flex-1 overflow-auto p-6">
+                    <div className="flex-1 overflow-auto  p-6">
                         <form className="flex flex-col gap-3 text-sm">
                             <div className="w-full flex flex-col gap-1">
                                 <p>Reason of Rejection:</p>
@@ -619,7 +618,7 @@ export default function ViewDocumentModal({ modalRef, data, onClose, user }) {
                                     required
                                     onChange={(e) => setRevisionLink(e.target.value)}
                                 ></textarea>
-                                <InputError message={data.errors.revisionLink} className="mt-2" />
+                                <InputError message={errors.revisionLink} className="mt-2" />
                                    <p>Originator Notes</p>
                                 <textarea
                                     rows="5"

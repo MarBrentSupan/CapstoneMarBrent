@@ -62,15 +62,14 @@ export default function Dashboard({ auth, pagedata }) {
 
     const generateUsername = () => {
         const userRole = (userRoles[data.userRoleId] || "").toLowerCase();
-
+    
         const nameParts = data.name ? data.name.split(" ") : [];
         const firstName = nameParts[0] ? nameParts[0].toLowerCase() : "";
-        const lastName = nameParts[nameParts.length - 1]
-            ? nameParts[nameParts.length - 1].toLowerCase()
-            : "";
-
-        const username = `${userRole}-${firstName}${lastName}`;
-
+        const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1].toLowerCase() : "";
+    
+        // Construct the username based on the presence of last name
+        const username = lastName ? `${userRole}-${firstName}${lastName}` : `${userRole}-${firstName}`;
+    
         setData((prevData) => {
             if (prevData.username !== username) {
                 return { ...prevData, username };
@@ -78,7 +77,7 @@ export default function Dashboard({ auth, pagedata }) {
             return prevData;
         });
     };
-
+    
     const generatePassword = () => {
         const firstName = data.name
             ? data.name.split(" ")[0].toLowerCase()

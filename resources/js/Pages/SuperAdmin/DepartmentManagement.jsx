@@ -48,7 +48,7 @@ function DepartmentManagementHeader(props) {
 export default function Dashboard({ auth, pagedata }) {
     const [showModal, setShowModal] = useState(false);
     const modalRef = useRef(null);
-    console.log(pagedata);
+
 
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",

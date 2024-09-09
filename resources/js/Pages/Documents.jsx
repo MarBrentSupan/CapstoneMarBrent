@@ -68,14 +68,13 @@ const columns = [
     { header: "Last Update", key: "notification_date" }
 ];
 
-export default function Dashboard({ auth, pagedata }) {
-    console.log(pagedata);
+export default function Dashboard({ auth, pagedata, errors }) {
     const { url  } = usePage();
     const [modalType, setModalType] = useState(null);
     const [selectedDocument, setSelectedDocument] = useState(null);
     const modalRef = useRef(null);
-    console.log(pagedata.content.documents.data);
-    const { data, setData, post, processing, errors, reset } = useForm({
+
+    const { data, setData, post, processing, reset } = useForm({
         name: '',
         externalUrl: '',
         totalPages:'',
@@ -106,8 +105,7 @@ export default function Dashboard({ auth, pagedata }) {
         const url = route(auth.user.user_role_name+'.documents');
         router.get(url);
     };
-    
-    console.log(search);
+
     const viewDocument = (doc) => {
         setSelectedDocument(doc);
         setModalType('view');
@@ -160,6 +158,7 @@ export default function Dashboard({ auth, pagedata }) {
                     <ViewDocumentModal
                         modalRef={modalRef}
                         user={auth.user}
+                        errors={errors}
                         data={selectedDocument}
                         onClose={() => setModalType(null)}
                     />
@@ -221,17 +220,6 @@ export default function Dashboard({ auth, pagedata }) {
                             {pagedata.filter.department.map((e)=><option value={e.id}>{e.name}</option>)}
                         </select>
                     </div>}
-
-                    {/* <div className="w-1/6">
-                        <label className="block text-sm font-medium text-gray-700">Department</label>
-                        <select 
-                        onChange={(e)=>setFilterDepartments(e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                            
-                            <option>Choose Department</option>
-                            {pagedata.filter.department.map((e)=><option value={e.id}>{e.name}</option>)}
-                        </select>
-                    </div> */}
 
                     {/* Go Button */}
                     <div className="flex-none">

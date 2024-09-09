@@ -214,7 +214,6 @@ export default function Authenticated({ user, header, children, notification, br
 
                                             <Dropdown.Content>
                                                 <div className='m-2 flex flex-col gap-3'>
-                                                {console.log("A",notification)}
                                                 {notification.map((e) => <>
                                                 <div className='bg-gray-200 p-2 rounded-md'>
                                                     <div className="">

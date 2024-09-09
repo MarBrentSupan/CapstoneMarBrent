@@ -62,7 +62,7 @@ export default function Dashboard({ auth, pagedata }) {
     const [modalType, setModalType] = useState(null);
     const [selectedDocument, setSelectedDocument] = useState(null);
     const modalRef = useRef(null);
-    console.log(pagedata.content.documents.data);
+
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         externalUrl: '',
