@@ -42,15 +42,18 @@ class SuperAdminController extends PageController
                 'notification'=>now()
             ]);
         }
-        User::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'username'=>$request->username,
-            'password'=>$request->password,
-            'userRoleId'=>$request->userRoleId,
-            'departmentId'=>$request->departmentId,
-            'notification'=>now()
-        ]);
+        else{
+            User::create([
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'username'=>$request->username,
+                'password'=>$request->password,
+                'userRoleId'=>$request->userRoleId,
+                'departmentId'=>$request->departmentId,
+                'notification'=>now()
+            ]);
+        }
+       
     }
 
     public function delete_user(Request $request)
