@@ -38,7 +38,7 @@ class SuperAdminController extends PageController
                 'username'=>$request->username,
                 'password'=>$request->password,
                 'userRoleId'=>$request->userRoleId,
-                'departmentId'=>3,
+                'departmentId'=>4,
                 'notification'=>now()
             ]);
         }
