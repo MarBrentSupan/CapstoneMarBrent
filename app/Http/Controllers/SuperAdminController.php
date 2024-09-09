@@ -39,6 +39,7 @@ class SuperAdminController extends PageController
         //         'notification'=>now()
         //     ]);
         // }
+        //
         User::create([
             'name'=>$request->name,
             'email'=>$request->email,
