@@ -27,16 +27,21 @@ class DatabaseSeeder extends Seeder
         UserRole::factory()->create(['name' => 'O']);
         UserRole::factory()->create(['name' => 'DC']);
 
-        SourceDocument::factory()->create(['name' => "Policy", 'acronym' => "PO"]);
-        SourceDocument::factory()->create(['name' => "Procedure", 'acronym' => "PD"]);
-        SourceDocument::factory()->create(['name' => "Job/Position Description", 'acronym' => "JD"]);
-        SourceDocument::factory()->create(['name' => "Guidelines", 'acronym' => "GU"]);
-        SourceDocument::factory()->create(['name' => "Form", 'acronym' => "FM"]);
-        SourceDocument::factory()->create(['name' => "Test Protocol", 'acronym' => "TP"]);
-        SourceDocument::factory()->create(['name' => "Training Module", 'acronym' => "TM"]);
-        SourceDocument::factory()->create(['name' => "Legal or Applicable Laws", 'acronym' => "LW"]);
-        SourceDocument::factory()->create(['name' => "External Document", 'acronym' => "ED"]);
-        SourceDocument::factory()->create(['name' => "School Manual", 'acronym' => "MN"]);
+        // SourceDocument::factory()->create(['name' => "Policy", 'acronym' => "PO"]);
+        // SourceDocument::factory()->create(['name' => "Procedure", 'acronym' => "PD"]);
+        // SourceDocument::factory()->create(['name' => "Job/Position Description", 'acronym' => "JD"]);
+        // SourceDocument::factory()->create(['name' => "Guidelines", 'acronym' => "GU"]);
+        // SourceDocument::factory()->create(['name' => "Form", 'acronym' => "FM"]);
+        // SourceDocument::factory()->create(['name' => "Test Protocol", 'acronym' => "TP"]);
+        // SourceDocument::factory()->create(['name' => "Training Module", 'acronym' => "TM"]);
+        // SourceDocument::factory()->create(['name' => "Legal or Applicable Laws", 'acronym' => "LW"]);
+        // SourceDocument::factory()->create(['name' => "External Document", 'acronym' => "ED"]);
+        // SourceDocument::factory()->create(['name' => "School Manual", 'acronym' => "MN"]);
+        SourceDocument::factory()->create(['name' => "Quality Manual", 'acronym' => "QM"]);
+        SourceDocument::factory()->create(['name' => "Procedures Manual", 'acronym' => "PM"]);
+        SourceDocument::factory()->create(['name' => "Forms Manual", 'acronym' => "FM"]);
+        SourceDocument::factory()->create(['name' => "Records Mgt. Manual", 'acronym' => "RMM"]);
+        SourceDocument::factory()->create(['name' => "Documented Information", 'acronym' => "DI"]);
 
         User::factory()->create([
             'name' => 'Mar Brent',
