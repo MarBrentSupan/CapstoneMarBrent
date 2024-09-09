@@ -20,7 +20,7 @@ export default function ForgotPassword({ status }) {
             <Head title="Forgot Password" />
 
             <div className="mb-4 text-sm text-gray-600">
-                No problemo!
+                Please enter Email!
             </div>
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
