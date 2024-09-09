@@ -20,8 +20,11 @@ class SuperAdminController extends PageController
         $sidenav = $this->sidenav($user);
         $departments=Department::get(["id","name"]);
         $users=User::paginate(10);
+        $dc_count=User::where("userRoleId","=",3)->count();
         $content = ["departments"=>$departments,
-                    "users"=>$users];
+                    "users"=>$users,
+                    "dc_count"=>$dc_count
+                    ];
         $data = compact('topnav', 'sidenav','content');
         return Inertia::render('SuperAdmin/UserManagement',["pagedata"=>$data]);
     }

@@ -155,6 +155,7 @@ export default function Dashboard({ auth, pagedata }) {
                         <CreateUserModal
                             departments={pagedata.content.departments}
                             modalRef={modalRef}
+                            dc_count={pagedata.content.dc_count}
                             data={data}
                             processing={processing}
                             errors={errors}

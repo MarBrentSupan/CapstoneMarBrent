@@ -21,7 +21,8 @@ export function CreateUserModal(props) {
                                             <Select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" name="userRoleId" onChange={props.handleInputChange} value={props.data.userRoleId}>
                                                 <option value="">Select Role</option>
                                                 <option value={2}>Originator</option>
-                                                <option value={3}>Document Controller</option>
+                                                {props.dc_count<1 &&
+                                                <option value={3}>Document Controller</option>}
                                             </Select>
                                             <InputError message={props.errors.userRoleId} className="mt-2" />
                                         </div>
