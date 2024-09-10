@@ -44,6 +44,9 @@ function UserManagementBreadcrumbs() {
 
 export default function Dashboard({ auth, pagedata }) {
     const [showModal, setShowModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [deleteId, setDeleteId ] = useState();
+
     const modalRef = useRef(null);
 
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -135,7 +138,11 @@ export default function Dashboard({ auth, pagedata }) {
     const delete_user = (e,id) => {
         e.preventDefault();
 
-        router.post(route('SA.delete-user'), { id })
+        router.post(route('SA.delete-user'), { id }, 
+            {
+                onFinish: () => { setShowDeleteModal(false);}
+            }
+        )
     };
 
     return (
@@ -166,6 +173,30 @@ export default function Dashboard({ auth, pagedata }) {
                 </div>
             </div>
 
+            {showDeleteModal && (
+                <div>
+                    <div className="fixed z-10 inset-0 overflow-y-auto ">
+                        <div className="flex items-center justify-center min-h-screen ">
+                            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                                <div className="bg-white rounded-lg shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+                                    <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 rounded-lg p-5">
+                                        <div className="flex flex-col w-full">
+                                            <div className="text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                <h3 className="text-lg mb-3 leading-6 font-medium text-gray-900">Do you want to delete this user</h3>
+                                                <hr />
+                                                <div className="mt-2 flex">
+                                                    <DangerButton onClick={(e) => delete_user(e, deleteId)}>Delete</DangerButton>
+                                                    <PrimaryButton onClick={() => setShowDeleteModal(false)}>Cancel</PrimaryButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                       
+            )}
+
             <div className="py-12">
                 <div className="  mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white shadow rounded-lg p-6">
@@ -178,13 +209,8 @@ export default function Dashboard({ auth, pagedata }) {
                             renderActions={(rowData) => (
                                 <>
                                 {rowData.id>1 && 
-                                 <DangerButton
-                                 onClick={(e) => delete_user(e, rowData.id)}
-                             >
-                                 Delete
-                             </DangerButton>
-                             }
-                                   
+                                    <PrimaryButton onClick={() => {setDeleteId(rowData.id); setShowDeleteModal(true) }}>Delete</PrimaryButton>
+                                } 
                                 </>
                             )}
                         ></TableComponents>
